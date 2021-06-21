@@ -23,8 +23,12 @@ window = sg.Window("Calcator", layout, margins=(100, 50))
 while True:
     event = window.read()
     num_system = decimal #if not specificed will default to decimal
-    number = ""
+    number = ""   
     if event == sg.WIN_CLOSED or event == "Quit":
         break
-    else:
-        noop
+        
+    elif event == sg.Button("Binary"):
+        num_system = Binary
+    
+ 
+           
