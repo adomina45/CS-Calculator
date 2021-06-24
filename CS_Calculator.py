@@ -21,7 +21,7 @@ layout = [[sg.Text("How can I help you?")],
  [sg.Button("Quit")]]
 
 # Create the window
-window = sg.Window("Calcator", layout, margins=(100, 50))
+window = sg.Window("Computer Science Calculator", layout, margins=(100, 50))
 
 continue_calculating = True
 while continue_calculating:
@@ -39,21 +39,37 @@ while continue_calculating:
     elif event == "Decimal":
         num_system = "decimal"
     elif event == "Binary Logarithm":
-        try:
-            f = float(input)
-            final = math.log(f,2)
-            print(final)
-        except:
-            print("The data you have input is of an invalid type")
-
-
-
-
-
-
-
-
-    #elif event == "Convert to Binary":
-    #elif event == "Convert to Decimal":
-    #elif event == "Convert to Hexadecimal":
-    #elif event == "Convert to Octal":
+        if num_system == "decimal":
+            try:
+                f = float(input)
+                final = math.log(f,2)
+                print(final)
+            except:
+                print("The data you have input is of a real number")
+    elif event == "Convert to Binary":
+        if num_system == "decimal":
+            try:
+                num = int(input)
+                b = bin(num)
+                print(b)
+            except:
+                print("The data you have input is of an integer")
+    elif event == "Convert to Decimal":
+        if num_system == "decimal":
+            print("You already have decimal selected. You need to change to another number system in order to convert to decimal.")
+    elif event == "Convert to Hexadecimal":
+        if num_system == "decimal":
+            try:
+                num = int(input)
+                h = hex(num)
+                print(h)
+            except:
+                print("The data you have input is of an integer")
+    elif event == "Convert to Octal":
+        if num_system == "decimal":
+            try:
+                num = int(input)
+                o = oct(num)
+                print(o)
+            except:
+                print("The data you have input is of an integer")
