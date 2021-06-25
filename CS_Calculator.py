@@ -9,11 +9,6 @@ layout = [[sg.Text("How can I help you?")],
  [sg.Button("Binary"), sg.Button("Decimal"), sg.Button("Hexadecimal"), sg.Button("Octal")],
  [sg.Text("What's the number?")],
  [sg.InputText(key='textbox')],
- #[sg.Button("0"), sg.Button("1"), sg.Button("2"), sg.Button("3")],
- #[sg.Button("4"), sg.Button("5"), sg.Button("6"), sg.Button("7")],
- #[sg.Button("8"), sg.Button("9"), sg.Button("A"), sg.Button("B")],
- #[sg.Button("C"), sg.Button("D"), sg.Button("E"), sg.Button("F")],
- #[sg.Button(".")],
  [sg.Text("What are we doing to the number?")],
  [sg.Button("Binary Logarithm"), sg.Button("Convert to Binary"), sg.Button("Convert to Decimal")],
  [sg.Button("Convert to Hexadecimal"), sg.Button("Convert to Octal")],
@@ -24,10 +19,10 @@ layout = [[sg.Text("How can I help you?")],
 window = sg.Window("Computer Science Calculator", layout, margins=(100, 50))
 
 continue_calculating = True
+num_system = "decimal" #if not specificed will default to decimal
 while continue_calculating:
     event, values = window.read()
     input = values['textbox'] #grab input from textbox
-    num_system = "decimal" #if not specificed will default to decimal
     if event == sg.WIN_CLOSED or event == "Quit":
         continue_calculating = False
     elif event == "Binary":
@@ -45,7 +40,8 @@ while continue_calculating:
                 final = math.log(f,2)
                 print(final)
             except:
-                print("The data you have input is of a real number")
+                print("The data you have input is not a real number")
+                
     elif event == "Convert to Binary":
         if num_system == "decimal":
             try:
@@ -53,7 +49,7 @@ while continue_calculating:
                 b = bin(num)
                 print(b)
             except:
-                print("The data you have input is of an integer")
+                print("The data you have input is not an integer")
     elif event == "Convert to Decimal":
         if num_system == "decimal":
             print("You already have decimal selected. You need to change to another number system in order to convert to decimal.")
@@ -64,7 +60,7 @@ while continue_calculating:
                 h = hex(num)
                 print(h)
             except:
-                print("The data you have input is of an integer")
+                print("The data you have input is not an integer")
     elif event == "Convert to Octal":
         if num_system == "decimal":
             try:
@@ -72,4 +68,5 @@ while continue_calculating:
                 o = oct(num)
                 print(o)
             except:
-                print("The data you have input is of an integer")
+                print("The data you have input is not an integer")
+    print("The current number system is " + num_system)
