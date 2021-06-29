@@ -41,7 +41,13 @@ while continue_calculating:
                 print(final)
             except:
                 print("The data you have input is not a real number")
-                
+        elif num_system == "binary":
+            try:
+                i = int(input, 2)
+                final = math.log(i,2)
+                print(final)
+            except:
+                print("The data you have input is not a binary number")
     elif event == "Convert to Binary":
         if num_system == "decimal":
             try:
@@ -49,7 +55,9 @@ while continue_calculating:
                 b = bin(num)
                 print(b)
             except:
-                print("The data you have input is not an integer")
+                print("The data you have input is not a decimal integer")
+        elif num_system == "binary":
+            print("You already have binary selectred. You need to change to another system in order to convert to decimal.")
     elif event == "Convert to Decimal":
         if num_system == "decimal":
             print("You already have decimal selected. You need to change to another number system in order to convert to decimal.")
