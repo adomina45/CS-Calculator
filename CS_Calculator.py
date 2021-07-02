@@ -19,7 +19,7 @@ layout = [[sg.Text("How can I help you?")],
 window = sg.Window("Computer Science Calculator", layout, margins=(100, 50))
 
 continue_calculating = True
-#num_system == "decimal"  #this line has not been specified. When you click on a button, the program crashes due to a Name Error of "decimal" not being defined
+num_system = "decimal" #if not specificed will default to decimal
 while continue_calculating:
     event, values = window.read()
     input = values['textbox'] #grab input from textbox
@@ -33,12 +33,7 @@ while continue_calculating:
         num_system = "octal"
     elif event == "Decimal":
         num_system = "decimal"
-break
-
-while continue_calculating:
-    event, values = window.read()
-    input = values['textbox']
-    if event == "Binary Logarithm":
+    elif event == "Binary Logarithm":
         if num_system == "decimal":
             try:
                 f = float(input)
@@ -46,7 +41,7 @@ while continue_calculating:
                 print(final)
             except:
                 print("The data you have input is not a real number")
-    elif num_system == "binary":
+        elif num_system == "binary":
             try:
                 i = int(input, 2)
                 final = math.log(i,2)
@@ -62,7 +57,7 @@ while continue_calculating:
             except:
                 print("The data you have input is not a decimal integer")
         elif num_system == "binary":
-            print("You already have binary selected. You need to change to another system in order to convert to decimal.")
+            print("You already have binary selectred. You need to change to another system in order to convert to decimal.")
     elif event == "Convert to Decimal":
         if num_system == "decimal":
             print("You already have decimal selected. You need to change to another number system in order to convert to decimal.")
@@ -83,4 +78,3 @@ while continue_calculating:
             except:
                 print("The data you have input is not an integer")
     print("The current number system is " + num_system)
-    break
